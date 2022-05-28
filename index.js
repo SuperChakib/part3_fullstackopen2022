@@ -41,21 +41,27 @@ app.get('/api/persons/:id', (request, response) => {
   const person = persons.find(p => p.id === id)
   person
   ? response.json(person)
-  : response.sendStatus(404).end()
+  : response.status(404).end()
 })
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   persons = persons.filter(p => p.id !== id)
-  response.sendStatus(204).end()
+  response.status(204).end()
 })
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
 
   if (!body.name || !body.number) {
-    return response.sendStatus(400).json({
+    return response.status(400).json({
       error: "name or number missing"
+    })
+  }
+
+  if (persons.find(p => p.name === body.name)) {
+    return response.status(400).json({
+      error: 'name must be unique'
     })
   }
   
