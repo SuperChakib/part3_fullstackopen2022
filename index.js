@@ -3,6 +3,9 @@ const morgan = require('morgan')
 
 const app = express()
 app.use(express.json())
+app.use(express.static('build'))
+morgan.token('data', (request, response) => request.method !== 'POST' ? '' : JSON.stringify(request.body))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :data'))
 
 let persons = [
     { 
@@ -51,9 +54,6 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end()
 })
 
-morgan.token('data', (request, response) => JSON.stringify(request.body))
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :data'))
-
 app.post('/api/persons', (request, response) => {
   const body = request.body
 
@@ -80,7 +80,7 @@ app.post('/api/persons', (request, response) => {
   response.json(person)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 })
