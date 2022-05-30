@@ -1,7 +1,7 @@
-GET http://localhost:3001/api/persons
+GET https://secret-refuge-10359.herokuapp.com/api/persons
 ###
 
-GET http://localhost:3001/api/persons/3
+GET https://secret-refuge-10359.herokuapp.com/api/persons/3
 ###
 
-DELETE http://localhost:3001/api/persons/3
+DELETE https://secret-refuge-10359.herokuapp.com/api/persons/3

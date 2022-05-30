@@ -1,0 +1,7 @@
+POST https://secret-refuge-10359.herokuapp.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "bitch queen",
+    "number": "1234223"
+}
