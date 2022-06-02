@@ -1,7 +1,16 @@
-GET https://secret-refuge-10359.herokuapp.com/api/persons
+GET http://localhost:3001/api/persons
 ###
 
-GET https://secret-refuge-10359.herokuapp.com/api/persons/3
+GET http://localhost:3001/api/persons
 ###
 
-DELETE https://secret-refuge-10359.herokuapp.com/api/persons/3
+DELETE http://localhost:3001/api/persons
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Test",
+    "number": "1234223"
+}
