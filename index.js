@@ -53,37 +53,41 @@ app.delete('/api/persons/:id', (request, response, next) => {
 })
 
 app.post('/api/persons', (request, response, next) => {
-  const body = request.body
+  const { name, number } = request.body
 
-  if (!body.name || !body.number) {
+  if (!name || !number) {
     return response.status(400).json({
       error: "name or number missing"
     })
   }
-  
-  const person = new Person({
-    name: body.name,
-    number: body.number
-  })
 
-  person
-    .save()
-    .then(returnedPerson => {
-      response.json(returnedPerson)
+  const person = new Person({ name, number })
+
+  Person
+    .find({ name })
+    .then(returnedList => {
+      if (returnedList.length) {
+        return response.status(400).json({
+          error: 'name already saved'
+        })
+      }
+      person
+        .save()
+        .then(returnedPerson => {
+          response.json(returnedPerson)
+        })
+        .catch(error => next(error))
     })
-    .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (request, response, next) => {
-  const body = request.body
-  
-  const note = {
-    name: body.name,
-    number: body.number
-  }
+  const { name, number } = request.body
 
   Person
-    .findByIdAndUpdate(request.params.id, note, { new: true, runValidators: true, context:'query' })
+    .findByIdAndUpdate(
+      request.params.id,
+      { name, number },
+      { new: true, runValidators: true, context:'query' })
     .then(returnedPerson => {
       response.json(returnedPerson)
     })

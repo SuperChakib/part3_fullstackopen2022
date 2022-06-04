@@ -1,25 +1,25 @@
 GET http://localhost:3001/api/persons
 ###
 
-GET http://localhost:3001/api/persons
+GET http://localhost:3001/api/persons/629b4f5bd3d39760b5359d78
 ###
 
-DELETE http://localhost:3001/api/persons/62967a416642295041d7cea7
+DELETE http://localhost:3001/api/persons/629b4f5bd3d39760b5359d78
 ###
 
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "lu",
-    "number": "1234223"
+    "name": "lsoq",
+    "number": "12-1212e12"
 }
 ###
 
-PUT http://localhost:3001/api/persons/629668d6586b4c2689b03dab
+PUT http://localhost:3001/api/persons/629b4f5bd3d39760b5359d78
 Content-Type: application/json
 
 {
-    "name": "lo",
-    "number": "sss"
+    "name": "loq",
+    "number": "33-010101"
 }
