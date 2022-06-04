@@ -4,7 +4,7 @@ GET http://localhost:3001/api/persons
 GET http://localhost:3001/api/persons/629b4f5bd3d39760b5359d78
 ###
 
-DELETE http://localhost:3001/api/persons/629b4f5bd3d39760b5359d78
+DELETE http://localhost:3001/api/persons/629bab3739991d486f4adf5f
 ###
 
 POST http://localhost:3001/api/persons
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 ###
 
-PUT http://localhost:3001/api/persons/629b4f5bd3d39760b5359d78
+PUT http://localhost:3001/api/persons/629bab3739991d486f4adf5f
 Content-Type: application/json
 
 {
